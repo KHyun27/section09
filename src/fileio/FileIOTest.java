@@ -57,5 +57,26 @@ public class FileIOTest {
             System.out.println(e.getMessage());
         }
 
+        Family<Person> fam = new Family<>();
+        fam.add(kang);
+        fam.add(yoo);
+        fam.add(park);
+
+        try {
+            ObjectIO.saveFamily("person.fam", fam);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Optional<Family<Person>> byFam = ObjectIO.loadFamily("person.fam");
+            byFam.orElseThrow(() -> new RuntimeException("객체를 정상적으로 로딩하지 못했습니다."));
+            Family<Person> fileObject = byFam.get();
+            fileObject.showItems();
+
+        } catch (IOException | ClassNotFoundException | RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
