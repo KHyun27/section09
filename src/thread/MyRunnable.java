@@ -14,7 +14,7 @@ public class MyRunnable implements Runnable {
         try {
             for (int i = 0; i < 50; i++) {
                 System.out.printf("My Runnable_%d : i = %d\n", id, i);
-                Thread.sleep(1);
+                Thread.sleep(10);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
