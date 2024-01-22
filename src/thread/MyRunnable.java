@@ -1,5 +1,6 @@
 package thread;
 
+// 방법 1
 public class MyRunnable implements Runnable {
 
     private int id;

@@ -10,9 +10,13 @@ public class MyThread extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 50; i++) {
-            System.out.printf("My thread_%d : i = %d\n", id, i);
+        try {
+            for (int i = 0; i < 50; i++) {
+                System.out.printf("My thread_%d : i = %d\n", id, i);
+                Thread.sleep(1);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-
     }
 }

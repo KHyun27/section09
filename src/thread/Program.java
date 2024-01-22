@@ -18,13 +18,36 @@ public class Program {
         Thread tr1 = new Thread(runnable1);
         tr1.start();
 
+        // 방법 2
+        Thread tr2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 10; i++) {
+                    System.out.println("i = " + 1);
+                }
+            }
+        });
+        tr2.start();
+
+        // 방법 3
+        Thread tr3 = new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                System.out.println("i = " + 1);
+            }
+        });
+        tr3.start();
 
 
         MyLoop loop = new MyLoop(); // thread 아님
         loop.run();
 
-        for (int i = 0; i < 50; i++) {
-            System.out.printf("main thread : i = %d\n", i);
+        try {
+            for (int i = 0; i < 50; i++) {
+                System.out.printf("main thread : i = %d\n", i);
+                Thread.sleep(1);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
 
     }
