@@ -19,5 +19,6 @@ public class Program {
         }
 
         System.out.println(sharedResource.getSharedValue());
+
     }
 }
